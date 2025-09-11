@@ -1,20 +1,69 @@
+/* Reset */
+body, h1, h2, h3, p, ul {
+  margin: 0;
+  padding: 0;
+}
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background: #fafafa;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  background: #f5f5f5;
   color: #333;
 }
 
-nav {
-  margin-bottom: 20px;
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
 }
 
-nav a {
-  margin-right: 10px;
+/* Sidebar */
+.sidebar {
+  background-color: #002b5c; /* Dark ISBA blue */
+  color: #fff;
+  width: 220px;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  color: #ffffff;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #ffffff;
   text-decoration: none;
-  color: #0077cc;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-nav a:hover {
-  text-decoration: underline;
+.sidebar ul li a:hover {
+  color: #f4c542; /* Gold accent */
+}
+
+/* Main content */
+.content {
+  flex-grow: 1;
+  padding: 40px;
+  background: #ffffff;
+  border-left: 3px solid #002b5c;
+}
+
+/* Typography */
+h1, h2, h3 {
+  color: #002b5c;
+}
+
+a {
+  color: #0056b3;
 }

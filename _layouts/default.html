@@ -4,20 +4,25 @@
   <meta charset="UTF-8">
   <title>{{ page.title }} - {{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <nav>
-    <a href="{{ '/' | relative_url }}">Home</a> |
-    <a href="{{ '/events/' | relative_url }}">Events</a> |
-    <a href="{{ '/board/' | relative_url }}">Board</a>
-  </nav>
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2>{{ site.title }}</h2>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li> <a href="{{ '/events/' | relative_url }}">Events</a> |
+        <li><a href="{{ '/board/' | relative_url }}">Board</a>
+        <li><a href="{{ '/bylaws/' | relative_url }}">Bylaws</a></li>
+      </ul>
+    </nav>
 
-  <main>
-    {{ content }}
-  </main>
-
-  <footer>
-    <p>&copy; {{ site.title }} {{ site.time | date: "%Y" }}</p>
-  </footer>
+    <!-- Main content -->
+    <main class="content">
+      {{ content }}
+    </main>
+  </div>
 </body>
 </html>
