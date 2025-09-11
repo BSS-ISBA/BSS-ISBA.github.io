@@ -3,6 +3,7 @@ body, h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   display: flex;
@@ -21,14 +22,17 @@ body {
 .sidebar {
   background-color: #002b5c; /* Dark ISBA blue */
   color: #fff;
-  width: 220px;
-  padding: 20px;
+  width: 240px;
+  padding: 30px 20px;
   flex-shrink: 0;
+  position: fixed; /* sticky for scrolling */
+  height: 100%;
+  overflow-y: auto;
 }
 
 .sidebar h2 {
-  font-size: 1.5em;
-  margin-bottom: 1em;
+  font-size: 1.8em;
+  margin-bottom: 1.5em;
   color: #ffffff;
 }
 
@@ -37,7 +41,7 @@ body {
 }
 
 .sidebar ul li {
-  margin: 15px 0;
+  margin: 20px 0;
 }
 
 .sidebar ul li a {
@@ -54,29 +58,215 @@ body {
 /* Main content */
 .content {
   flex-grow: 1;
-  padding: 40px;
+  margin-left: 260px; /* space for fixed sidebar */
+  padding: 50px 60px;
   background: #ffffff;
-  border-left: 3px solid #002b5c;
+  border-left: 4px solid #002b5c;
 }
 
 /* Typography */
-h1, h2, h3 {
+h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  color: #002b5c;
+}
+
+h2 {
+  font-size: 2.2em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: #002b5c;
+}
+
+h3 {
+  font-size: 1.8em;
+  margin-top: 30px;
+  margin-bottom: 15px;
   color: #002b5c;
 }
 
 a {
   color: #0056b3;
+  text-decoration: underline;
 }
-
 
 /* Bylaws section numbering */
-.bylaws {
-  counter-reset: section; /* reset counter */
-}
-
 .bylaws h2::before {
   counter-increment: section;
   content: counter(section, upper-alpha) ". ";
   font-weight: bold;
   color: #002b5c;
 }
+
+/* -------------------- */
+/* Responsive Design */
+/* -------------------- */
+@media screen and (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 30px 20px;
+    border-left: none;
+  }
+  
+  body {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.2em;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+}
+
+/* Sidebar toggle button (hidden on desktop) */
+.sidebar-toggle {
+  display: none;
+  background: #002b5c;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 900px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -260px; /* hidden by default */
+    top: 0;
+    height: 100%;
+    width: 240px;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    padding: 30px 20px;
+  }
+
+  .sidebar.open {
+    left: 0; /* slide in */
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px 15px;
+    border-left: none;
+  }
+  
+  body {
+    flex-direction: column;
+  }
+}
+/* Paragraphs */
+p {
+  margin: 0 0 20px 0;  /* bottom margin 20px */
+  line-height: 1.7;
+}
+
+
+/* Reduce spacing between paragraph and immediately following list */
+.content p + ul {
+  margin-top: 5px;   /* small gap instead of full paragraph margin */
+}
+
+/* Lists in main content */
+.content ul {
+  margin-left: 30px;   /* indent */
+  margin-bottom: 20px; /* spacing below list */
+  line-height: 1.7;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+/* Bullets styling */
+.content ul li::marker {
+  font-size: 1.2em;
+  color: #002b5c;
+}
+
+.content ul li {
+  color: inherit; /* keep text color same as main text */
+}
+
+/* Board members layout */
+.board-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;         /* horizontal and vertical space between members */
+  margin-top: 30px;
+}
+
+/* Individual board member */
+.board-member {
+  display: flex;
+  align-items: center;   /* vertically center text next to photo */
+  gap: 20px;             /* space between photo and text */
+  width: 100%;
+  max-width: 500px;      /* controls how many fit per row */
+}
+
+/* Paragraph inside member block */
+.board-member p {
+  margin: 0;             /* remove extra paragraph margins */
+}
+
+/* Board member photos */
+.board-member img {
+  width: 130px;           /* desktop size */
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #002b5c;
+}
+
+/* Make layout responsive */
+@media screen and (max-width: 600px) {
+  .board-member {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;            /* smaller gap on mobile */
+    margin-bottom: 20px;   /* extra space between stacked members */
+  }
+
+  .board-member img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Make the first paragraph prominent only on the homepage */
+.content.home p:first-of-type {
+  font-size: 1.3em;        /* slightly larger */
+  line-height: 1.9;        /* more breathing room */
+  font-weight: 500;         /* slightly bolder */
+  color: #002b5c;           /* dark blue to match theme */
+  margin-bottom: 25px;      /* extra space before next content */
+  
+  /* subtle highlight */
+  background-color: #e6f0fa; /* very light blue */
+  padding: 15px 20px;
+  border-left: 4px solid #002b5c;
+  border-radius: 4px;
+}
+
+

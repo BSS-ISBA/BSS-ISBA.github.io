@@ -7,23 +7,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <button class="sidebar-toggle" onclick="toggleSidebar()">☰ {{ site.title }}</button>
+
   <div class="container">
     <!-- Sidebar -->
-    <nav class="sidebar">
+    <nav class="sidebar" id="sidebar">
       <h2>{{ site.title }}</h2>
       <ul>
         <li><a href="{{ '/' | relative_url }}">Home</a></li>
-        <li> <a href="{{ '/events/' | relative_url }}">Events</a> 
-        <li><a href="{{ '/board/' | relative_url }}">Board</a>
+        <li><a href="{{ '/events/' | relative_url }}">Events</a></li>
+        <li><a href="{{ '/board/' | relative_url }}">Board</a></li>
         <li><a href="{{ '/bylaws/' | relative_url }}">Bylaws</a></li>
       </ul>
     </nav>
 
     <!-- Main content -->
-<main class="content {% if page.title == 'Bylaws' %}bylaws{% endif %}">
+<main class="content {% if page.title == 'Home' %}home{% endif %} {% if page.title == 'Bylaws' %}bylaws{% endif %}">
   {{ content }}
 </main>
 
   </div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const sidebarLinks = sidebar.querySelectorAll('a');
+
+  function toggleSidebar() {
+    sidebar.classList.toggle('open');
+  }
+
+  // Close sidebar when a link is clicked (mobile)
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) { // only for mobile
+        sidebar.classList.remove('open');
+      }
+    });
+  });
+
+  // Optional: close sidebar if window is resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      sidebar.classList.remove('open');
+    }
+  });
+</script>
+
 </body>
 </html>
