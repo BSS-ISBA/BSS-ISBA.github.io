@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <nav>
+    <a href="{{ '/' | relative_url }}">Home</a> |
+    <a href="{{ '/events/' | relative_url }}">Events</a> |
+    <a href="{{ '/board/' | relative_url }}">Board</a>
+  </nav>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>&copy; {{ site.title }} {{ site.time | date: "%Y" }}</p>
+  </footer>
+</body>
+</html>
