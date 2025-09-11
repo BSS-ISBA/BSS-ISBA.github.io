@@ -3,9 +3,9 @@ layout: default
 title: Home
 ---
 
-# Welcome to BSS-ISBA
+# Bayesian Social Sciences section
 
-This is the homepage of the **Bayesian Social Sciences** section of the **International Society for Bayesian Analysis** (ISBA).
+This is the homepage of the <b>Bayesian Social Sciences</b> section of the <a href="https://bayesian.org"><b>International Society for Bayesian Analysis</b> (ISBA)</a>.
 
 We aim to
 * facilitate interactions between Bayesian Statisticians and researchers in the Social Sciences
@@ -13,4 +13,4 @@ We aim to
 * promote education in Bayesian methods in the Social Sciences
 * foster the availability of Bayesian methods across the Social Sciences
 
-Our members work on very diverse application areas: Anthropology, Archaeology, Demography, Economics, Geography, History, Linguistics, Political Science, Psychology, Sociology...
+Our members work in a wide range of disciplines: Anthropology, Archaeology, Demography, Economics, Geography, History, Linguistics, Political Science, Psychology, Sociology...
