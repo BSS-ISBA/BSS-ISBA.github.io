@@ -67,3 +67,16 @@ h1, h2, h3 {
 a {
   color: #0056b3;
 }
+
+
+/* Bylaws section numbering */
+.bylaws {
+  counter-reset: section; /* reset counter */
+}
+
+.bylaws h2::before {
+  counter-increment: section;
+  content: counter(section, upper-alpha) ". ";
+  font-weight: bold;
+  color: #002b5c;
+}

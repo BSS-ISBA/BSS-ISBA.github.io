@@ -1,3 +1,4 @@
 title: "BSS-ISBA"
 description: "Bayesian Social Sciences - section of the International Society for Bayesian Analysis"
 theme: minima   # built-in GitHub Pages theme (easy to start)
+permalink: pretty

@@ -20,9 +20,10 @@
     </nav>
 
     <!-- Main content -->
-    <main class="content">
-      {{ content }}
-    </main>
+<main class="content {% if page.title == 'Bylaws' %}bylaws{% endif %}">
+  {{ content }}
+</main>
+
   </div>
 </body>
 </html>
